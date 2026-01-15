@@ -1,259 +1,503 @@
-/* -------------------------
-   GLOBAL RESET
-------------------------- */
+/* ✅ Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* ✅ Theme */
+:root {
+  --bg: #0b0b10;
+  --text: rgba(255, 255, 255, 0.92);
+  --muted: rgba(255, 255, 255, 0.60);
+  --purple: #6d63ff;
+  --border: rgba(255, 255, 255, 0.14);
+  --glass: rgba(255, 255, 255, 0.06);
+}
+
+/* ✅ Body */
 body {
-  background: #000;
-  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+    "Segoe UI", Roboto, Arial, sans-serif;
+
+  background:
+    radial-gradient(900px 500px at 70% 20%, rgba(109, 99, 255, 0.20), transparent 60%),
+    radial-gradient(700px 600px at 20% 10%, rgba(138, 92, 255, 0.15), transparent 60%),
+    var(--bg);
+
+  color: var(--text);
   overflow-x: hidden;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* -------------------------
-   HEADER / NAVBAR
-------------------------- */
-header {
+/* ===============================
+   ✅ Floating Logo
+================================= */
+.logo-left {
   position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
+  top: 18px;
+  left: 18px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.40);
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.95);
-  padding: 15px 5%;
-  backdrop-filter: blur(8px);
 }
 
-.logo {
-  font-size: 22px;
-  font-weight: bold;
-  color: #ff0000;
+.logo-left img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
 }
 
-nav {
+/* ===============================
+   ✅ Desktop Navbar (Center)
+================================= */
+.nav-center {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--glass);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+  padding: 10px 18px;
+  border-radius: 50px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.40);
+  z-index: 999;
+  overflow: hidden;
 }
 
-nav ul {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-}
-
-nav ul li a {
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-nav ul li a:hover {
-  color: #ff0000;
-}
-
-.menu-icon {
-  display: none;
-  font-size: 28px;
-  cursor: pointer;
-  color: white;
-}
-
-/* Mobile Menu */
-.mobile-menu {
-  display: none;
-  flex-direction: column;
-  background: #111;
+/* ✅ Indicator */
+.indicator {
   position: absolute;
-  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 40px;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #ffffff, #c9c9ff);
   left: 0;
-  top: 60px;
-  padding: 15px 5%;
+  width: 0;
+  transition: all 0.35s ease;
+  z-index: 0;
 }
 
-.mobile-menu a {
-  padding: 12px 0;
-  border-bottom: 1px solid #333;
-  font-size: 16px;
+.nav-center a {
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 15px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 16px;
+  border-radius: 30px;
+  transition: 0.25s ease;
 }
 
-/* -------------------------
-   HERO SECTION
-------------------------- */
-.hero {
-  padding: 140px 10% 80px;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.hero h1 {
-  font-size: 42px;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-.hero h1 span {
-  color: #ff0000;
-}
-
-.hero p {
-  font-size: 16px;
-  line-height: 1.6;
-  max-width: 550px;
-  margin-bottom: 25px;
-  color: #bbb;
-}
-
-/* -------------------------
-   BUTTONS
-------------------------- */
-.hero-buttons {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.secondary-btn {
-  display: inline-block;
-  padding: 12px 20px;
-  border-radius: 6px;
-  border: 2px solid #ff0000;
-  color: #fff;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.secondary-btn:hover {
-  background: #ff0000;
+.nav-center a.active {
   color: #000;
 }
 
-/* -------------------------
-   CARDS / FEATURES
-------------------------- */
-.features {
-  padding: 70px 10%;
+.nav-center a:not(.active):hover {
+  background: rgba(255, 255, 255, 0.13);
 }
 
-.features h2 {
+/* ===============================
+   ✅ Mobile Hamburger
+================================= */
+.menu-btn {
+  position: fixed;
+  top: 20px;
+  right: 18px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--glass);
+  backdrop-filter: blur(16px);
+  color: var(--text);
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.40);
+  z-index: 1100;
+  display: none;
+}
+
+/* ===============================
+   ✅ Mobile Dropdown Menu
+================================= */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 82px;
+  right: 18px;
+  width: min(84vw, 320px);
+  padding: 14px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: rgba(20, 20, 30, 0.92);
+  backdrop-filter: blur(16px);
+  z-index: 1101;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mobile-menu a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 900;
+  padding: 12px 14px;
+  border-radius: 12px;
+}
+
+.mobile-menu a.m-active {
+  background: #fff;
+  color: #000;
+}
+
+.mobile-menu a:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ===============================
+   ✅ HERO
+================================= */
+.hero {
+  min-height: 100vh;
+  padding: 140px 22px 60px;
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 44px;
+  align-items: center;
+}
+
+/* ✅ Tag */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--glass);
+  color: var(--muted);
+  width: fit-content;
+  margin-bottom: 18px;
+}
+
+.tag .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--purple);
+  box-shadow: 0 0 16px rgba(109, 99, 255, 0.7);
+}
+
+/* ✅ Hero Title */
+.hero-title {
+  font-size: clamp(34px, 5.6vw, 78px);
+  font-weight: 900;
+  line-height: 1.03;
+  letter-spacing: -2px;
+}
+
+.hero-title .brand {
+  background: linear-gradient(90deg, #6d63ff, #c56cff, #00c6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ✅ Hero subtitle */
+.hero-sub {
+  margin-top: 16px;
+  max-width: 560px;
+  font-size: clamp(14px, 2vw, 18px);
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ✅ Buttons area */
+.hero-buttons {
+  margin-top: 24px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ✅ Secondary button */
+.secondary-btn {
+  padding: 12px 18px;
+  border-radius: 16px;
+  text-decoration: none;
+  font-weight: 900;
+  color: var(--text);
+  border: 1px solid rgba(109, 99, 255, 0.40);
+  background: rgba(109, 99, 255, 0.12);
+  transition: 0.25s;
+}
+
+.secondary-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(109, 99, 255, 0.20);
+}
+
+/* ===============================
+   ✅ Home screenshot (Auto slider)
+================================= */
+.hero-shot {
+  width: min(380px, 92vw);
+  margin-left: auto;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--glass);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
+}
+
+.hero-shot img {
+  width: 100%;
+  display: block;
+  object-fit: contain;
+  background: #000;
+  transition: opacity 0.25s ease;
+}
+
+/* ✅ Thumbnails below hero */
+.thumbs {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.thumb {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--glass);
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumb.active {
+  border: 1px solid rgba(109, 99, 255, 0.65);
+  box-shadow: 0 0 0 3px rgba(109, 99, 255, 0.18);
+}
+
+/* ✅ Mobile scroll thumbnails */
+@media (max-width: 520px) {
+  .thumbs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 8px 2px;
+    justify-content: flex-start;
+  }
+
+  .thumbs::-webkit-scrollbar {
+    height: 0;
+  }
+}
+
+/* ===============================
+   ✅ Sections
+================================= */
+.section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 82px 22px;
+}
+
+.section-head {
   text-align: center;
-  font-size: 30px;
-  margin-bottom: 40px;
-  color: #ff0000;
+  max-width: 780px;
+  margin: auto;
 }
 
-.feature-grid {
+.section-head h2 {
+  font-size: clamp(26px, 3.2vw, 40px);
+  margin-bottom: 10px;
+}
+
+.section-head p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ✅ About mini cards */
+.mini-cards {
+  margin-top: 26px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
+  gap: 16px;
 }
 
-.feature-card {
-  background: #111;
-  padding: 25px;
-  border-radius: 10px;
-  border: 1px solid #222;
-  transition: 0.3s;
+.mini-card {
+  padding: 20px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: var(--glass);
 }
 
-.feature-card:hover {
-  transform: translateY(-8px);
-  border-color: #ff0000;
+.mini-card h3 {
+  margin-bottom: 8px;
 }
 
-.feature-card h3 {
-  margin-bottom: 10px;
-  font-size: 20px;
-  color: #fff;
+/* ===============================
+   ✅ Cross collage screenshots (1–8)
+================================= */
+.cross-collage {
+  margin-top: 34px;
+  position: relative;
+  height: 700px;
+  border-radius: 28px;
+  overflow: hidden;
 }
 
-.feature-card p {
-  font-size: 14px;
-  color: #aaa;
-  line-height: 1.6;
+.cross-img {
+  position: absolute;
+  width: min(340px, 40vw);
+  border-radius: 32px;
+  border: 1px solid var(--border);
+  background: #000;
+  box-shadow: 0 35px 90px rgba(0, 0, 0, 0.70);
+  object-fit: contain;
+  height: auto;
 }
 
-/* -------------------------
-   FOOTER
-------------------------- */
-footer {
-  padding: 30px 10%;
+/* positions */
+.img-1 { left: -2%; top: 10%; transform: rotate(-25deg); }
+.img-2 { left: 16%; top: -8%; transform: rotate(-12deg); z-index: 2; }
+.img-3 { left: 38%; top: 4%; transform: rotate(6deg); z-index: 3; }
+.img-4 { right: 18%; top: -4%; transform: rotate(15deg); z-index: 2; }
+.img-5 { right: -2%; top: 12%; transform: rotate(26deg); }
+
+.img-6 { left: 10%; bottom: -22%; transform: rotate(-10deg); z-index: 1; }
+.img-7 { left: 40%; bottom: -28%; transform: rotate(10deg); z-index: 1; }
+.img-8 { right: 8%; bottom: -22%; transform: rotate(22deg); z-index: 1; }
+
+/* ===============================
+   ✅ Features cards
+================================= */
+.cards {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.card {
+  padding: 20px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: var(--glass);
+}
+
+.card h3 {
+  margin-bottom: 8px;
+}
+
+/* ✅ Footer */
+.footer {
+  padding: 34px 22px 44px;
   text-align: center;
-  background: #111;
-  border-top: 1px solid #222;
+  color: var(--muted);
 }
 
-footer p {
-  font-size: 14px;
-  color: #777;
-}
-
-/* ============================================================
-   RESPONSIVE BREAKPOINTS
-============================================================ */
-
-/* Tablet & Small desktop */
+/* ===============================
+   ✅ RESPONSIVE (All devices)
+================================= */
 @media (max-width: 900px) {
-  .feature-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .hero {
+    grid-template-columns: 1fr;
     text-align: center;
-    padding: 140px 22px 60px;
   }
 
-  .hero p {
-    max-width: 100%;
+  .hero-sub {
+    margin: 0 auto;
   }
 
-  /* ✅ FIX: center download button on mobile/small screens */
+  .hero-shot {
+    margin: 24px auto 0;
+  }
+
+  .mini-cards,
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  /* ✅ Collage becomes vertical on mobile */
+  .cross-collage {
+    height: auto;
+    padding: 10px;
+  }
+
+  .cross-img {
+    position: relative;
+    width: min(380px, 92vw);
+    transform: none !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    margin: 18px auto;
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-center {
+    display: none;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+}
+
+/* ===========================
+   MOBILE RESPONSIVE FIXES
+   =========================== */
+
+/* Center Download button on mobile/small screens */
+@media (max-width: 900px) {
   .hero-buttons {
     justify-content: center;
   }
 }
 
-/* Mobile */
+/* Better hero spacing (fixed header overlap issue) */
 @media (max-width: 768px) {
-  nav ul {
-    display: none;
-  }
-
-  .menu-icon {
-    display: block;
-  }
-
-  .mobile-menu.active {
-    display: flex;
-  }
-
-  /* ✅ Better mobile spacing */
   .hero {
     padding-top: 120px;
   }
-
-  .feature-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero h1 {
-    font-size: 34px;
-  }
 }
 
-/* Very Small Mobile Screens */
+/* Optional: Full-width button on very small screens */
 @media (max-width: 520px) {
-  /* ✅ Optional: full-width CTA button looks nicer on phones */
   .hero-buttons {
     width: 100%;
   }
@@ -263,3 +507,4 @@ footer p {
     text-align: center;
   }
 }
+
