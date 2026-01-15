@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskIt - Official App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Floating Logo -->
+  <div class="logo-left">
+    <img src="Website_Logo.webp" alt="TaskIt Logo" />
+  </div>
+
+  <!-- Desktop Navbar -->
+  <nav class="nav-center" id="nav">
+    <span class="indicator" id="indicator"></span>
+    <a href="#home" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#screenshots">Screenshots</a>
+    <a href="#features">Features</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- Mobile Hamburger -->
+  <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home" class="m-active">Home</a>
+    <a href="#about">About</a>
+    <a href="#screenshots">Screenshots</a>
+    <a href="#features">Features</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <div class="hero-left">
+      <div class="tag">
+        <span class="dot"></span>
+        <span>New • TaskIt v1.0</span>
+      </div>
+
+      <h1 class="hero-title">
+        Download <span class="brand">TaskIt</span> <br />
+        Plan your day. <br />
+        Stay productive.
+      </h1>
+
+      <p class="hero-sub">
+        Premium dark UI task manager. Add tasks, reminders, filters and get your life organized.
+      </p>
+
+      <div class="hero-buttons">
+        <a class="secondary-btn" href="https://github.com/sahilgaikwad-2486/TaskIt/raw/master/app/build/outputs/apk/debug/app-debug.apk
+" target="_blank">Download APK</a>
+      </div>
+    </div>
+
+    <!-- HERO RIGHT (scrollable mockups / auto slider) -->
+    <div class="hero-right">
+      <div class="hero-shot">
+        <img id="heroShot" src="Mockups/Main_Page.jpg" alt="TaskIt Screenshot">
+      </div>
+
+      <!-- thumbnails only 1,4,6,7 -->
+      <div class="thumbs">
+        <button class="thumb active" data-shot="Mockups/Main_Page.jpg"><img src="Mockups/Main_Page.jpg" alt=""></button>
+        <button class="thumb" data-shot="Mockups/Home_Page.jpg"><img src="Mockups/Home_Page.jpg" alt=""></button>
+        <button class="thumb" data-shot="Mockups/AddTask_Page.jpg"><img src="Mockups/AddTask_Page.jpg" alt=""></button>
+        <button class="thumb" data-shot="Mockups/Profile_Page.jpg"><img src="Mockups/Profile_Page.jpg" alt=""></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-head">
+      <h2>About TaskIt</h2>
+      <p>Designed with premium UI and smooth modern layouts.</p>
+    </div>
+
+    <div class="mini-cards">
+      <div class="mini-card">
+        <h3>Premium Dark UI</h3>
+        <p>Modern style, clean layout, smooth experience.</p>
+      </div>
+      <div class="mini-card">
+        <h3>Quick Add Tasks</h3>
+        <p>Add tasks with date/time/repeat/reminder.</p>
+      </div>
+      <div class="mini-card">
+        <h3>Profile & Stats</h3>
+        <p>Track pending, today & completed tasks.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREENSHOTS CROSS COLLAGE (ALL 1–8) -->
+  <section class="section" id="screenshots">
+    <div class="section-head">
+      <h2>Screenshots</h2>
+    </div>
+
+    <div class="cross-collage">
+      <img class="cross-img img-1" src="Mockups/Main_Page.jpg" alt="">
+      <img class="cross-img img-2" src="Mockups/Signup_Page.jpg" alt="">
+      <img class="cross-img img-3" src="Mockups/Login_Page.jpg" alt="">
+      <img class="cross-img img-4" src="Mockups/Home_Page.jpg" alt="">
+      <img class="cross-img img-5" src="Mockups/Drawer_Page.jpg" alt="">
+      <img class="cross-img img-6" src="Mockups/AddTask_Page.jpg" alt="">
+      <img class="cross-img img-7" src="Mockups/Profile_Page.jpg" alt="">
+      <img class="cross-img img-8" src="Mockups/Settings_Page.jpg" alt="">
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section" id="features">
+    <div class="section-head">
+      <h2>Features</h2>
+      <p>Everything you need in a task manager.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Smart Filters</h3>
+        <p>All / Pending / Today / Completed views.</p>
+      </div>
+      <div class="card">
+        <h3>Reminders</h3>
+        <p>Never miss tasks using reminders.</p>
+      </div>
+      <div class="card">
+        <h3>Modern UI</h3>
+        <p>Premium styling, smooth experience.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="section-head">
+      <h2>Contact</h2>
+      <p>Email: <b>officialstudiox24@gmail.com</b></p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> TaskIt. Made with ❤️</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
