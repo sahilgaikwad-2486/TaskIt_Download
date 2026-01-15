@@ -436,6 +436,10 @@ body {
     text-align: center;
   }
 
+  .hero-buttons {
+    justify-content: center;
+  }
+
   .hero-sub {
     margin: 0 auto;
   }
