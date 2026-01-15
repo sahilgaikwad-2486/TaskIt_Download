@@ -444,8 +444,13 @@ body {
     margin: 0 auto;
   }
 
-  .hero-shot {
-    margin: 24px auto 0;
+  .hero-shot{
+    margin: 0 auto;
+  }
+
+  .hero-shot img{
+    max-width: 100%;
+    height: auto;
   }
 
   .mini-cards,
