@@ -477,34 +477,3 @@ body {
     display: block;
   }
 }
-
-/* ===========================
-   MOBILE RESPONSIVE FIXES
-   =========================== */
-
-/* Center Download button on mobile/small screens */
-@media (max-width: 900px) {
-  .hero-buttons {
-    justify-content: center;
-  }
-}
-
-/* Better hero spacing (fixed header overlap issue) */
-@media (max-width: 768px) {
-  .hero {
-    padding-top: 120px;
-  }
-}
-
-/* Optional: Full-width button on very small screens */
-@media (max-width: 520px) {
-  .hero-buttons {
-    width: 100%;
-  }
-
-  .secondary-btn {
-    width: 100%;
-    text-align: center;
-  }
-}
-
